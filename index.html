@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,21 +11,22 @@
     <meta property="og:description" content="The modern platform for teams who build. Collaborate, deploy, and scale.">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#ffffff">
-    <title>GSPA — Ship faster. Scale smarter.</title>
+    <title>GSPA — Ship faster.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Lao:wght@300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ 
     <!-- CURSOR SPOTLIGHT -->
     <div class="cursor-spotlight" id="cursorSpotlight"></div>
 
     <!-- LOADER -->
     <div class="loader" id="loader">
         <div class="loader-inner">
-            <div class="loader-logo">GSPA</div>
+            <div class="loader-logo"><img src="images/car-side.png" alt="GSPA Logo" class="brand-logo"> GSPA</div>
             <div class="loader-percent" id="loaderPercent">0%</div>
             <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
         </div>
@@ -35,20 +36,45 @@
     <nav class="nav" id="nav">
         <div class="nav-inner container">
             <a href="#hero" class="nav-brand">
-                <span class="brand-mark">◆</span> GSPA
+                <img src="images/car-side.png" alt="GSPA Logo" class="brand-logo"> GSPA
             </a>
             <div class="nav-menu" id="navMenu">
-                <a href="#features" class="nav-item" data-sec="features">Features</a>
-                <a href="#product" class="nav-item" data-sec="product">Product</a>
-                <a href="#testimonials" class="nav-item" data-sec="testimonials">Testimonials</a>
-                <a href="#pricing" class="nav-item" data-sec="pricing">Pricing</a>
+                <a href="#features" class="nav-item" data-sec="features" data-i18n="nav.features">Features</a>
+                <a href="#product" class="nav-item" data-sec="product" data-i18n="nav.product">Product</a>
+                <a href="#testimonials" class="nav-item" data-sec="testimonials" data-i18n="nav.testimonials">Testimonials</a>
+                <a href="#pricing" class="nav-item" data-sec="pricing" data-i18n="nav.pricing">Pricing</a>
             </div>
             <div class="nav-right">
+                <!-- Language Switcher -->
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn" id="langBtn" aria-label="Switch language">
+                        <span class="lang-flag" id="langFlag"><span class="fi fi-us"></span></span>
+                        <span class="lang-code" id="langCode">EN</span>
+                        <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" data-lang="en">
+                            <span class="lang-opt-flag"><span class="fi fi-us"></span></span>
+                            <span class="lang-opt-name">English</span>
+                            <span class="lang-check">✓</span>
+                        </button>
+                        <button class="lang-option" data-lang="lo">
+                            <span class="lang-opt-flag"><span class="fi fi-la"></span></span>
+                            <span class="lang-opt-name">ລາວ</span>
+                            <span class="lang-check">✓</span>
+                        </button>
+                        <button class="lang-option" data-lang="th">
+                            <span class="lang-opt-flag"><span class="fi fi-th"></span></span>
+                            <span class="lang-opt-name">ไทย</span>
+                            <span class="lang-check">✓</span>
+                        </button>
+                    </div>
+                </div>
                 <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
                     <svg class="t-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                     <svg class="t-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
                 </button>
-                <a href="#pricing" class="nav-cta">Get Started</a>
+                <a href="#pricing" class="nav-cta" data-i18n="nav.cta">Get Started</a>
             </div>
             <button class="burger" id="burger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -61,7 +87,7 @@
         <div class="hero-glow"></div>
         <div class="container hero-body">
             <div class="pill reveal fd">
-                <span class="pill-dot"></span> Now in Public Beta
+                <span class="pill-dot"></span> <span data-i18n="hero.pill">Now in Public Beta</span>
             </div>
             <h1 class="hero-h reveal fu s1" style="position: relative;">
                 <!-- Placeholder to maintain height -->
@@ -71,18 +97,18 @@
                     <span class="hero-typewriter"></span><span class="typewriter-cursor"></span>
                 </div>
             </h1>
-            <p class="hero-p reveal fu s2">
+            <p class="hero-p reveal fu s2" data-i18n="hero.desc">
                 The modern platform for teams who build. Collaborate in real-time, 
                 deploy with confidence, and grow without limits.
             </p>
             <div class="hero-btns reveal fu s3">
-                <a href="#pricing" class="btn primary">Start for Free</a>
+                <a href="#pricing" class="btn primary" data-i18n="hero.cta1">Start for Free</a>
                 <a href="#product" class="btn ghost">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    Watch Demo
+                    <span data-i18n="hero.cta2">Watch Demo</span>
                 </a>
             </div>
-            <p class="hero-note reveal fu s4">No credit card required · Free plan available</p>
+            <p class="hero-note reveal fu s4" data-i18n="hero.note">No credit card required · Free plan available</p>
         </div>
         <div class="hero-visual reveal fu s4">
             <div class="mockup glass">
@@ -121,7 +147,7 @@
     <!-- LOGOS -->
     <section class="logos">
         <div class="container">
-            <p class="logos-label reveal fu">Trusted by teams at</p>
+            <p class="logos-label reveal fu" data-i18n="logos.label">Trusted by teams at</p>
             <div class="logos-carousel reveal fu s1">
                 <div class="logos-track">
                     <span class="logo-item"><img src="https://cdn.simpleicons.org/stripe" alt="" class="logo-icon"> Stripe</span>
@@ -148,22 +174,22 @@
             <div class="stats-grid">
                 <div class="stat-card reveal fu s0">
                     <div class="stat-number"><span data-count="10000">0</span>+</div>
-                    <div class="stat-label">Active Users</div>
+                    <div class="stat-label" data-i18n="stats.users">Active Users</div>
                     <div class="stat-bar"><div class="stat-fill" style="--fill-w:92%"></div></div>
                 </div>
                 <div class="stat-card reveal fu s1">
                     <div class="stat-number"><span data-count="500">0</span>M+</div>
-                    <div class="stat-label">API Requests / Day</div>
+                    <div class="stat-label" data-i18n="stats.api">API Requests / Day</div>
                     <div class="stat-bar"><div class="stat-fill" style="--fill-w:78%"></div></div>
                 </div>
                 <div class="stat-card reveal fu s2">
                     <div class="stat-number"><span data-count="99">0</span>.<span data-count="9">0</span>%</div>
-                    <div class="stat-label">Uptime SLA</div>
+                    <div class="stat-label" data-i18n="stats.uptime">Uptime SLA</div>
                     <div class="stat-bar"><div class="stat-fill" style="--fill-w:99%"></div></div>
                 </div>
                 <div class="stat-card reveal fu s3">
                     <div class="stat-number"><span data-count="150">0</span>+</div>
-                    <div class="stat-label">Countries Served</div>
+                    <div class="stat-label" data-i18n="stats.countries">Countries Served</div>
                     <div class="stat-bar"><div class="stat-fill" style="--fill-w:85%"></div></div>
                 </div>
             </div>
@@ -174,40 +200,40 @@
     <section class="features" id="features">
         <div class="container">
             <header class="sec-head reveal fu">
-                <span class="sec-tag">Features</span>
-                <h2 class="sec-title">Everything you need to ship</h2>
-                <p class="sec-desc">Powerful tools, beautiful defaults, and an experience your team will love.</p>
+                <span class="sec-tag" data-i18n="features.tag">Features</span>
+                <h2 class="sec-title" data-i18n="features.title">Everything you need to ship</h2>
+                <p class="sec-desc" data-i18n="features.desc">Powerful tools, beautiful defaults, and an experience your team will love.</p>
             </header>
             <div class="feat-grid">
                 <div class="feat-card reveal fu s0">
                     <div class="feat-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-                    <h3>Real-time Dashboard</h3>
-                    <p>Monitor all your metrics in a beautiful, live-updating interface.</p>
+                    <h3 data-i18n="features.f1.title">Real-time Dashboard</h3>
+                    <p data-i18n="features.f1.desc">Monitor all your metrics in a beautiful, live-updating interface.</p>
                 </div>
                 <div class="feat-card reveal fu s1">
                     <div class="feat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-                    <h3>Team Collaboration</h3>
-                    <p>Work together seamlessly with comments, mentions, and shared views.</p>
+                    <h3 data-i18n="features.f2.title">Team Collaboration</h3>
+                    <p data-i18n="features.f2.desc">Work together seamlessly with comments, mentions, and shared views.</p>
                 </div>
                 <div class="feat-card reveal fu s2">
                     <div class="feat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-                    <h3>Advanced Analytics</h3>
-                    <p>Deep insights into performance with custom reports and alerts.</p>
+                    <h3 data-i18n="features.f3.title">Advanced Analytics</h3>
+                    <p data-i18n="features.f3.desc">Deep insights into performance with custom reports and alerts.</p>
                 </div>
                 <div class="feat-card reveal fu s3">
                     <div class="feat-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                    <h3>Enterprise Security</h3>
-                    <p>SOC 2, SSO, role-based access, and audit logs out of the box.</p>
+                    <h3 data-i18n="features.f4.title">Enterprise Security</h3>
+                    <p data-i18n="features.f4.desc">SOC 2, SSO, role-based access, and audit logs out of the box.</p>
                 </div>
                 <div class="feat-card reveal fu s4">
                     <div class="feat-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-                    <h3>Lightning Fast</h3>
-                    <p>Built on edge infrastructure. Sub-100ms response times globally.</p>
+                    <h3 data-i18n="features.f5.title">Lightning Fast</h3>
+                    <p data-i18n="features.f5.desc">Built on edge infrastructure. Sub-100ms response times globally.</p>
                 </div>
                 <div class="feat-card reveal fu s5">
                     <div class="feat-icon cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-                    <h3>Developer API</h3>
-                    <p>RESTful & GraphQL APIs with SDKs for every major language.</p>
+                    <h3 data-i18n="features.f6.title">Developer API</h3>
+                    <p data-i18n="features.f6.desc">RESTful & GraphQL APIs with SDKs for every major language.</p>
                 </div>
             </div>
         </div>
@@ -222,9 +248,9 @@
         </div>
         <div class="container">
             <header class="sec-head reveal fu">
-                <span class="sec-tag">Showcase</span>
-                <h2 class="sec-title">Built for Performance</h2>
-                <p class="sec-desc">Experience next-level speed, precision, and design across every product.</p>
+                <span class="sec-tag" data-i18n="product.tag">Showcase</span>
+                <h2 class="sec-title" data-i18n="product.title">Built for Performance</h2>
+                <p class="sec-desc" data-i18n="product.desc">Experience next-level speed, precision, and design across every product.</p>
             </header>
             <div class="car-gallery">
                 <div class="car-card reveal fu s0" id="carCard1">
@@ -271,9 +297,9 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <header class="sec-head reveal fu">
-                <span class="sec-tag">Testimonials</span>
-                <h2 class="sec-title">Loved by teams worldwide</h2>
-                <p class="sec-desc">See what developers and product teams are saying about GSPA.</p>
+                <span class="sec-tag" data-i18n="testimonials.tag">Testimonials</span>
+                <h2 class="sec-title" data-i18n="testimonials.title">Loved by teams worldwide</h2>
+                <p class="sec-desc" data-i18n="testimonials.desc">See what developers and product teams are saying about GSPA.</p>
             </header>
             <div class="testi-grid">
                 <div class="testi-card glass reveal fu s0">
@@ -317,16 +343,16 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <header class="sec-head reveal fu">
-                <span class="sec-tag">Pricing</span>
-                <h2 class="sec-title">Simple, transparent pricing</h2>
-                <p class="sec-desc">Start free, upgrade when you're ready. No surprises.</p>
+                <span class="sec-tag" data-i18n="pricing.tag">Pricing</span>
+                <h2 class="sec-title" data-i18n="pricing.title">Simple, transparent pricing</h2>
+                <p class="sec-desc" data-i18n="pricing.desc">Start free, upgrade when you're ready. No surprises.</p>
             </header>
             <div class="price-grid">
                 <!-- Free -->
                 <div class="price-card glass reveal fu s0">
                     <div class="price-head">
-                        <h3>Starter</h3>
-                        <p class="price-sub">For individuals and side projects</p>
+                        <h3 data-i18n="pricing.starter.name">Starter</h3>
+                        <p class="price-sub" data-i18n="pricing.starter.desc">For individuals and side projects</p>
                     </div>
                     <div class="price-amount">
                         <span class="price-currency">$</span><span class="price-num">0</span><span class="price-period">/mo</span>
@@ -337,14 +363,14 @@
                         <li><span class="ck">✓</span> Community support</li>
                         <li><span class="ck">✓</span> Basic analytics</li>
                     </ul>
-                    <a href="#" class="btn outline full">Get Started Free</a>
+                    <a href="#" class="btn outline full" data-i18n="pricing.starter.cta">Get Started Free</a>
                 </div>
                 <!-- Pro -->
                 <div class="price-card glass featured reveal fu s1">
-                    <div class="price-badge">Most Popular</div>
+                    <div class="price-badge" data-i18n="pricing.badge">Most Popular</div>
                     <div class="price-head">
-                        <h3>Pro</h3>
-                        <p class="price-sub">For growing teams and startups</p>
+                        <h3 data-i18n="pricing.pro.name">Pro</h3>
+                        <p class="price-sub" data-i18n="pricing.pro.desc">For growing teams and startups</p>
                     </div>
                     <div class="price-amount">
                         <span class="price-currency">$</span><span class="price-num">29</span><span class="price-period">/mo</span>
@@ -357,13 +383,13 @@
                         <li><span class="ck">✓</span> Team collaboration</li>
                         <li><span class="ck">✓</span> Custom domains</li>
                     </ul>
-                    <a href="#" class="btn primary full">Start Free Trial</a>
+                    <a href="#" class="btn primary full" data-i18n="pricing.pro.cta">Start Free Trial</a>
                 </div>
                 <!-- Enterprise -->
                 <div class="price-card glass reveal fu s2">
                     <div class="price-head">
-                        <h3>Enterprise</h3>
-                        <p class="price-sub">For large organizations</p>
+                        <h3 data-i18n="pricing.enterprise.name">Enterprise</h3>
+                        <p class="price-sub" data-i18n="pricing.enterprise.desc">For large organizations</p>
                     </div>
                     <div class="price-amount">
                         <span class="price-num">Custom</span>
@@ -375,7 +401,7 @@
                         <li><span class="ck">✓</span> SSO & SAML</li>
                         <li><span class="ck">✓</span> SLA guarantee</li>
                     </ul>
-                    <a href="#" class="btn outline full">Contact Sales</a>
+                    <a href="#" class="btn outline full" data-i18n="pricing.enterprise.cta">Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -385,11 +411,11 @@
     <section class="cta">
         <div class="container">
             <div class="cta-box reveal fu">
-                <h2>Ready to build something great?</h2>
-                <p>Join thousands of teams already shipping with GSPA. Start free today.</p>
+                <h2 data-i18n="cta.title">Ready to build something great?</h2>
+                <p data-i18n="cta.desc">Join thousands of teams already shipping with GSPA. Start free today.</p>
                 <div class="cta-btns">
-                    <a href="#pricing" class="btn primary lg">Get Started Free</a>
-                    <a href="#" class="btn ghost lg">Talk to Sales</a>
+                    <a href="#pricing" class="btn primary lg" data-i18n="cta.btn1">Get Started Free</a>
+                    <a href="#" class="btn ghost lg" data-i18n="cta.btn2">Talk to Sales</a>
                 </div>
             </div>
         </div>
@@ -409,24 +435,24 @@
                     </div>
                 </div>
                 <div class="ft-col">
-                    <h4>Product</h4>
-                    <a href="#features">Features</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#">Changelog</a>
-                    <a href="#">Roadmap</a>
+                    <h4 data-i18n="footer.product">Product</h4>
+                    <a href="#features" data-i18n="nav.features">Features</a>
+                    <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+                    <a href="#" data-i18n="footer.changelog">Changelog</a>
+                    <a href="#" data-i18n="footer.roadmap">Roadmap</a>
                 </div>
                 <div class="ft-col">
-                    <h4>Company</h4>
-                    <a href="#">About</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Contact</a>
+                    <h4 data-i18n="footer.company">Company</h4>
+                    <a href="#" data-i18n="footer.about">About</a>
+                    <a href="#" data-i18n="footer.blog">Blog</a>
+                    <a href="#" data-i18n="footer.careers">Careers</a>
+                    <a href="#" data-i18n="footer.contact">Contact</a>
                 </div>
                 <div class="ft-col">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Security</a>
+                    <h4 data-i18n="footer.legal">Legal</h4>
+                    <a href="#" data-i18n="footer.privacy">Privacy</a>
+                    <a href="#" data-i18n="footer.terms">Terms</a>
+                    <a href="#" data-i18n="footer.security">Security</a>
                 </div>
             </div>
             <div class="ft-bottom">
@@ -442,6 +468,7 @@
 
     <script src="gsap.min.js"></script>
     <script src="TextPlugin.min.js"></script>
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

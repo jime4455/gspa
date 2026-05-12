@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatBars();
     initCarTilt();
     initTypewriter();
+    I18N.init();
 });
 
 /* ── 1. Loader ──────────────────────────────────────────── */
@@ -112,6 +113,7 @@ function initRipple() {
             const old = this.querySelector('.ripple');
             if (old) old.remove();
 
+            
             const s = document.createElement('span');
             s.classList.add('ripple');
             const r = this.getBoundingClientRect();
@@ -289,8 +291,19 @@ function initTypewriter() {
     // Type out the text with HTML tags over 2.5 seconds
     // Small delay to allow the hero section to fade in first
     setTimeout(() => {
+        // Use current language headline if i18n is loaded
+        let headline = "Ship faster.<br><span class='accent'>Scale smarter.</span>";
+        if (typeof I18N !== 'undefined') {
+            const lang = I18N.getCurrentLang();
+            const headlines = {
+                en: "Ship faster.<br><span class='accent'>Scale smarter.</span>",
+                lo: "ສົ່ງໄວຂຶ້ນ.<br><span class='accent'>ຂະຫຍາຍສະຫລາດຂຶ້ນ.</span>",
+                th: "ส่งเร็วขึ้น.<br><span class='accent'>ขยายฉลาดขึ้น.</span>"
+            };
+            headline = headlines[lang] || headline;
+        }
         gsap.to(".hero-typewriter", {
-            text: "Ship faster.<br><span class='accent'>Scale smarter.</span>",
+            text: headline,
             duration: 2.5,
             ease: "none"
         });
